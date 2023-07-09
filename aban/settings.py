@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # apps
     "account",
     "cryptocurrency",
+    "wallet",
     "transaction",
 ]
 

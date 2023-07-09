@@ -1,15 +1,12 @@
 from django.contrib import admin
 
-from wallet.models import Wallet, WalletCryptocurrency
+from wallet.models import Wallet
 
-
-class WalletCryptocurrencyInline(admin.TabularInline):
-    model = WalletCryptocurrency
 
 @admin.register(Wallet)
 class WalletAdmin(admin.ModelAdmin):
-    list_display = ["user"]
-    inlines = [WalletCryptocurrencyInline]
+    list_display = ["user", "cryptocurrency", "balance"]
+    list_filter = ["user"]
 
     def has_add_permission(self, request):
         return False
@@ -19,4 +16,3 @@ class WalletAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
-
